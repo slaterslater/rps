@@ -8,106 +8,39 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <title>RPS</title>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-   
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
   <link href="https://getbootstrap.com/docs/4.4/examples/grid/grid.css" rel="stylesheet">
   <style type="text/css">
   </style>
-
 </head>
 
 <body>
   <div class="container">
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
       <label class="btn btn-secondary btn-lg disabled">
-        <input type="radio" name="options" id="1" autocomplete="off" checked>R
+        <input type="radio" name="options" id="1" autocomplete="off" checked>Rock
       </label>
       <label class="btn btn-secondary btn-lg disabled">
-        <input type="radio" name="options" id="2" autocomplete="off">P
+        <input type="radio" name="options" id="2" autocomplete="off">Paper
       </label>
       <label class="btn btn-secondary btn-lg disabled">
-        <input type="radio" name="options" id="3" autocomplete="off">S
+        <input type="radio" name="options" id="3" autocomplete="off">Scissors
       </label>
     </div>
     <div class="row mb-3">
-      <div class="col-3"><button type="button" class="btn btn-primary float-left" id="start" onclick="startGame()">Start</button></div>
+      <div class="col-3"><button type="button" class="btn btn-primary float-left" id="start"
+          onclick="startGame()">Start</button></div>
       <div class="col-9 alert alert-light" role="alert" id="message">Ready</div>
     </div>
   </div>
   <footer>
-    <script>
-      //let options = document.getElementsByClassName("rps");
-      // for (let i = 0; i < options.length; i++) {
-      //   options[i].addEventListener("click", startGame);
-      // }
-
-      let options = [
-        {name:"Rock", wins: "Scissors"},
-        {name:"Paper", wins:"Rock"},
-        {name:"Scissors", wins:"Paper"}
-      ];
-
-     function displayMsg(text){
-        $("#message").html(text); 
-      }
-
-      function countDown(timeleft){
-        var shoot = setInterval(function(){
-          if(timeleft){
-            displayMsg(timeleft--);
-          } else {
-            displayMsg("shoot");
-            clearInterval(shoot);
-            setTimeout(function(){
-              endGame();
-            }, 500);
-          }
-        }, 700);
-      }
-
-      function startGame() {
-        $(".btn-secondary").toggleClass("disabled");
-        $("#start").text("");
-        countDown(2); 
-      }
-
-      function endGame(){
-        $(".btn-secondary").toggleClass("disabled");
-        let choice = $(".active > input").attr("id");
-        if(choice == null){
-          displayMsg("nothing?");
-        }
-        getResult(choice);
-        //displayMsg(choice);
-        $("#start").text("again?");
-      }
-
-      function getResult(choice){
-        var result;
-        var c = Math.ceil(Math.random() * 3);
-        //let c_val = $(`input#${c}`).html;
-        displayMsg(`${c}=${c_val}`);
-      }
-        // let u = this.id;
-        // let u_val = this.innerHTML;
-        // var c = Math.ceil(Math.random() * 3);
-        // let c_val = document.getElementById(c).innerHTML;
-        // var result;
-        // if (u < c)
-        //   result = (u - c == -1) ? "Lose" : "Win";
-        // else if (u > c)
-        //   result = (u - c == 1) ? "Win" : "Lose";
-        // else
-        //   result = "Tie";
-        // document.getElementById("choice").innerHTML = `u:${u_val} c:${c_val} ${result}`;
-      
-
-    </script>
+    <script src="game.js"></script>
   </footer>
-
 </body>
-
-
 </html>
